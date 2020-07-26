@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <title>Milaan Dahiya</title>
+  <!--Google Fonts-->
+  <link href="./assets/css" rel="stylesheet">
+  <!--jQuery-->
+  <script src="./assets/jquery.min.js.download"></script>
+  <!--Mobile Friendly-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--Material-->
+  <link rel="stylesheet" href="./assets/materialize.min.css">
+  <link href="./assets/icon" rel="stylesheet">
+  <script src="./assets/materialize.min.js.download"></script>
+  <script src="./assets/analytics.js.download" async=""></script>
+  <style>
+    * {
+      font-family: 'Open Sans', sans-serif;
+      color:white;
+    }
+
+    body {
+      background:black;
+    }
+
+    #spinner {
+      height:100px;
+      width:100px;
+      z-index: 100;
+      border-radius:100%;
+      border:12px solid #2196f3;
+      border-bottom-color: #1976d2;
+      margin:auto;
+      top:0;bottom:0;left:0;right:0;
+      position:fixed;
+      animation:spinner 1.5s infinite linear;
+    }
+
+    @keyframes spinner {
+      0% {
+        transform:rotate(0deg);
+      }
+      100% {
+        transform:rotate(360deg);
+      }
+    }
+
+    #white {
+      width: 100%;
+      height: 100%;
+      position:fixed;
+      top:0;
+      left:0;
+      background:black;
+      z-index: 99;
+    }
+
+    h1, h2, h3 {
+      text-align:center;
+    }
+
+    #social, #email_space {
+      text-align:center;
+    }
+
+    #email_space {
+      color:black;
+      margin:auto;
+      text-align: left;
+      margin-top:0 0 20px 0;
+      background:white;
+      border-radius:5px;
+      max-width:550px;
+      padding:20px;
+    }
+
+    .square {
+      width:100px;
+      height:100px;
+      display:block;
+      margin:auto;
+    }
+    ul, li {
+      transition:all .75s ease;
+      list-style-type:none;
+      padding:10px;
+    }
+
+    input, textarea {
+      color:black;
+      text-align: left;
+    }
+
+    .hidepadding {
+      padding:0;
+      margin:0;
+    }
+</style>
+</head>
+<body>
+<div id="spinner" style="display: none;"></div>
+<div id="white" style="display: none;"></div>
+<div id="header"><h2>Milaan Dahiya</h2></div>
+<div id="social">
+  <ul id="list_container">
+    <li><a onclick="" href="mailto:milaandahiya@gmail.com"><img id="zero" src="./assets/email.svg" class="square tooltipped" data-position="right" data-delay="50" data-tooltip="Email Me" data-tooltip-id="8bce98d3-0f83-971e-db8c-7253d3dd8cde" style="">
+    </a></li><li><a target="_blank" href="https://www.instagram.com/milaandahiya/"><img id="one" src="./assets/insta.svg" class="square tooltipped" data-position="right" data-delay="50" data-tooltip="Follow me at @milaandahiya" data-tooltip-id="3f794a1c-440e-5041-3d7e-f369751a5046" style=""></a></li>
+    <li><a target="_blank" href="https://twitter.com/milaandahiya"><img id="three" src="./assets/twitter.svg" class="square tooltipped" data-position="right" data-delay="50" data-tooltip="Follow me at @milaandahiya" data-tooltip-id="5c593f15-b0d8-b4c1-3213-397ba2667fe3" style=""></a></li>
+  </ul>
+</div>
+<div id="email_space" style="display: none;">
+  <a onclick="closeEmail()" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Go back to main page." href="milaan.ml" data-tooltip-id="610e9ce2-ebc5-f64a-9e56-331a24ee68cf">&#8592; Go Back</a><br><br>
+<img style="margin-bottom:35px;" title="Contact me " id="zero" src="./assets/email.svg" class="square">
+
+      <form action="https://milaan.ml/form.php" method="post">
+        <div class="row">
+          <div class="input-field col s6">
+            <input onkeyup="checkToShow()" name="first_name" id="first_name" type="text" class="validate">
+            <label for="first_name">First Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input onkeyup="checkToShow()" name="last_name" id="last_name" type="text" class="validate">
+            <label for="last_name">Last Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+      
+        <div class="row">
+          <div class="input-field col s6">
+            <!-- <input onkeyup="checkToShow()" name="first_name" id="first_name" type="text" class="validate">
+            <label for="first_name">First Name</label>
+            <input onkeyup="checkToShow()" name="last_name" id="last_name" type="text" class="validate">
+            <label for="last_name">Last Name</label> -->
+          </div>
+        </div>
+        <div class="row">
+            <input onkeyup="checkToShow()" name="email" id="email" type="email" class="validate">
+            <label for="email">Email</label>
+          </div>
+        </div>
+          <div class="row">
+        <div class="input-field col s12">
+          <textarea onkeyup="checkToShow()" id="message" name="message" class="materialize-textarea"></textarea>
+          <label for="message">Your message here...</label>
+        </div>
+      </div>
+     <div class="row">
+       <button id="disabled_btn" style="margin-left:10px;margin-top:30px;" data-position="top" data-delay="50" data-tooltip="Please fill out all fields correctly before continuing" type="button" class="btn disabled tooltipped" data-tooltip-id="b13372f9-a759-7b9f-f51a-325b4fe4e5da">Invalid
+         <i class="material-icons right">send</i>
+       </button>
+      <button id="enabled_btn" style="margin-left: 10px; margin-top: 30px; display: none;" class="btn waves-effect waves-light" type="submit">Submit
+        <i class="material-icons right">send</i>
+      </button>
+    </div>
+  
+</div></form>
+<script>
+$('#email_space').fadeOut('fast');
+
+$('#spinner').fadeIn('fast').delay(1000).fadeOut('slow');
+$('#white').fadeIn('fast').delay(1500).fadeOut('slow');
+
+$('#zero').fadeOut('fast').delay(1750).fadeIn('fast');
+$('#one').fadeOut('fast').delay(2000).fadeIn('fast');
+$('#two').fadeOut('fast').delay(2250).fadeIn('fast');
+$('#three').fadeOut('fast').delay(2500).fadeIn('fast');
+$('#four').fadeOut('fast').delay(2750).fadeIn('fast');
+
+// Quick setup for form
+
+$('#enabled_btn').hide();
+$('#disabled_btn').show();
+
+function email() {
+  $('#four').delay(100).fadeOut('fast');
+  $('#three').delay(150).fadeOut('fast');
+  $('#two').delay(300).fadeOut('fast');
+  $('#one').delay(350).fadeOut('fast');
+  $('#zero').delay(400).fadeOut('fast');
+  $('#email_space').delay(700).fadeIn('slow');
+
+  // Add 'hidepadding' class to <li> to prevent massive amt of padding
+  $('#list_container').children().addClass('hidepadding');
+}
+
+function closeEmail() {
+  // Remove 'hidepadding' class to <li> to add space
+  $('#list_container').children().delay(500).removeClass('hidepadding');
+
+
+  $('#email_space').delay(0).fadeOut('fast');
+  $('#zero').delay(100).fadeIn('slow');
+  $('#one').delay(150).fadeIn('slow');
+  $('#two').delay(200).fadeIn('slow');
+  $('#three').delay(250).fadeIn('slow');
+  $('#four').delay(300).fadeIn('slow');
+}
+
+function checkToShow() {
+  nameStr = $('#first_name').val() + " " + $('#last_name').val();
+  emailStr = $('#email').val();
+  msgStr = $('#message').val();
+  console.log(nameStr + " * " + emailStr + " * " + msgStr);
+
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  var special = /[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g;
+
+  if (nameStr.length > 5 && !special.test(nameStr) && re.test(emailStr) && msgStr.length > 5) {
+    showRealBtn();
+  }
+  else {
+    hideRealBtn();
+  }
+}
+
+function showRealBtn() {
+  // $('#enabled_btn').show();
+  // $('#disabled_btn').hide();
+  $('#disabled_btn').hide();
+  $('#enabled_btn').show();
+}
+
+function hideRealBtn() {
+  // $('#enabled_btn').hide();
+  // $('#disabled_btn').show();
+  $('#enabled_btn').hide();
+  $('#disabled_btn').show();
+}
+</script>
+</div><div class="material-tooltip" id="8bce98d3-0f83-971e-db8c-7253d3dd8cde"><span>Email Me</span><div class="backdrop"></div></div><div class="material-tooltip" id="3f794a1c-440e-5041-3d7e-f369751a5046" style="display: none; left: 741px; top: 277.047px; margin-left: 0px; margin-top: 0px; opacity: 0;"><span>Follow me at @milaandahiya</span><div class="backdrop" style="top: -7px; left: 0px; width: 14px; height: 14px; border-radius: 0px 14px 14px 0px; transform-origin: 5% 50%; margin-top: 19px; margin-left: 0px; display: none; opacity: 0; transform: scaleX(1) scaleY(1);"></div></div><div class="material-tooltip" id="9f918db7-dc92-3ef5-1eed-73d2f9205f76"><span></span><div class="backdrop"></div></div><div class="material-tooltip" id="5c593f15-b0d8-b4c1-3213-397ba2667fe3"><span>Follow me at @milaandahiya</span><div class="backdrop"></div></div><div class="material-tooltip" id="6f4429ba-f0a8-4496-b48e-f238c8edbd1e"><span></span><div class="backdrop"></div></div><div class="material-tooltip" id="610e9ce2-ebc5-f64a-9e56-331a24ee68cf"><span>Go back to main page.</span><div class="backdrop"></div></div><div class="material-tooltip" id="b13372f9-a759-7b9f-f51a-325b4fe4e5da"><span>Please fill out all fields correctly before continuing</span><div class="backdrop"></div></div><div class="hiddendiv common"></div></body></html>
